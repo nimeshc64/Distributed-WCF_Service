@@ -1,7 +1,0 @@
-# Distributed App WCF Service
-
-
-
--
-
--

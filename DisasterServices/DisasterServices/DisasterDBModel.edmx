@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DisasterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="A_id" />
+          </Key>
+          <Property Name="A_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Area_name" Type="varchar" MaxLength="50" />
+          <Property Name="Alocation" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Disaster_Type">
+          <Key>
+            <PropertyRef Name="D_id" />
+          </Key>
+          <Property Name="D_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Disaster_Name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Suggestion">
+          <Key>
+            <PropertyRef Name="S_id" />
+          </Key>
+          <Property Name="S_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Area_id" Type="varchar" MaxLength="50" />
+          <Property Name="SaddDate" Type="datetime" />
+          <Property Name="SapproveDate" Type="datetime" />
+          <Property Name="User_id" Type="varchar" MaxLength="50" />
+          <Property Name="Disaster_id" Type="varchar" MaxLength="50" />
+          <Property Name="Sstatus" Type="bit" />
+          <Property Name="SuserLocation" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="U_id" />
+          </Key>
+          <Property Name="U_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Uname" Type="nchar" MaxLength="10" />
+          <Property Name="Uemail" Type="nchar" MaxLength="10" />
+          <Property Name="Upassword" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="UserAlert">
+          <Key>
+            <PropertyRef Name="Al_id" />
+          </Key>
+          <Property Name="Al_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Area_id" Type="varchar" MaxLength="50" />
+          <Property Name="Disaster_id" Type="varchar" MaxLength="50" />
+          <Property Name="ALmessage" Type="varchar" MaxLength="50" />
+          <Property Name="ALdate" Type="datetime" />
+          <Property Name="ALriskLevel" Type="varchar" MaxLength="50" />
+          <Property Name="ALsafeLocation" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="DisasterModelStoreContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disaster_Type" EntityType="Self.Disaster_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suggestion" EntityType="Self.Suggestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAlert" EntityType="Self.UserAlert" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DisasterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DisasterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Areas" EntityType="DisasterModel.Area" />
+          <EntitySet Name="Disaster_Type" EntityType="DisasterModel.Disaster_Type" />
+          <EntitySet Name="Suggestions" EntityType="DisasterModel.Suggestion" />
+          <EntitySet Name="Users" EntityType="DisasterModel.User" />
+          <EntitySet Name="UserAlerts" EntityType="DisasterModel.UserAlert" />
+        </EntityContainer>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="A_id" />
+          </Key>
+          <Property Name="A_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Area_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Alocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Disaster_Type">
+          <Key>
+            <PropertyRef Name="D_id" />
+          </Key>
+          <Property Name="D_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Disaster_Name" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Suggestion">
+          <Key>
+            <PropertyRef Name="S_id" />
+          </Key>
+          <Property Name="S_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Area_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SaddDate" Type="DateTime" Precision="3" />
+          <Property Name="SapproveDate" Type="DateTime" Precision="3" />
+          <Property Name="User_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Disaster_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sstatus" Type="Boolean" />
+          <Property Name="SuserLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="U_id" />
+          </Key>
+          <Property Name="U_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Uname" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Uemail" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Upassword" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserAlert">
+          <Key>
+            <PropertyRef Name="Al_id" />
+          </Key>
+          <Property Name="Al_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Area_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Disaster_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ALmessage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ALdate" Type="DateTime" Precision="3" />
+          <Property Name="ALriskLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ALsafeLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DisasterModelStoreContainer" CdmEntityContainer="DisasterEntities">
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="DisasterModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="Alocation" ColumnName="Alocation" />
+                <ScalarProperty Name="Area_name" ColumnName="Area_name" />
+                <ScalarProperty Name="A_id" ColumnName="A_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disaster_Type">
+            <EntityTypeMapping TypeName="DisasterModel.Disaster_Type">
+              <MappingFragment StoreEntitySet="Disaster_Type">
+                <ScalarProperty Name="Disaster_Name" ColumnName="Disaster_Name" />
+                <ScalarProperty Name="D_id" ColumnName="D_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suggestions">
+            <EntityTypeMapping TypeName="DisasterModel.Suggestion">
+              <MappingFragment StoreEntitySet="Suggestion">
+                <ScalarProperty Name="SuserLocation" ColumnName="SuserLocation" />
+                <ScalarProperty Name="Sstatus" ColumnName="Sstatus" />
+                <ScalarProperty Name="Disaster_id" ColumnName="Disaster_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="SapproveDate" ColumnName="SapproveDate" />
+                <ScalarProperty Name="SaddDate" ColumnName="SaddDate" />
+                <ScalarProperty Name="Area_id" ColumnName="Area_id" />
+                <ScalarProperty Name="S_id" ColumnName="S_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DisasterModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Upassword" ColumnName="Upassword" />
+                <ScalarProperty Name="Uemail" ColumnName="Uemail" />
+                <ScalarProperty Name="Uname" ColumnName="Uname" />
+                <ScalarProperty Name="U_id" ColumnName="U_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAlerts">
+            <EntityTypeMapping TypeName="DisasterModel.UserAlert">
+              <MappingFragment StoreEntitySet="UserAlert">
+                <ScalarProperty Name="ALsafeLocation" ColumnName="ALsafeLocation" />
+                <ScalarProperty Name="ALriskLevel" ColumnName="ALriskLevel" />
+                <ScalarProperty Name="ALdate" ColumnName="ALdate" />
+                <ScalarProperty Name="ALmessage" ColumnName="ALmessage" />
+                <ScalarProperty Name="Disaster_id" ColumnName="Disaster_id" />
+                <ScalarProperty Name="Area_id" ColumnName="Area_id" />
+                <ScalarProperty Name="Al_id" ColumnName="Al_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
