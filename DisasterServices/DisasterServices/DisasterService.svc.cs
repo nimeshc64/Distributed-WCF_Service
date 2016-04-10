@@ -413,6 +413,96 @@ namespace DisasterServices
             }
         }
 
+        public List<Area> GetAreabySuggestion()
+        {
+            try
+            {
+                List<Suggestion> suggestion = new List<Suggestion>();
+                List<Area> areaList = new List<Area>();
+                using (DisasterEntities entitie = new DisasterEntities())
+                {
+                    var query1 = (from sugg in entitie.Suggestions select sugg);
+                    if (query1.Any())
+                        suggestion = query1.ToList();
+
+                    foreach (Suggestion sug in suggestion)
+                    {
+                        var query = (from info in entitie.Areas
+                                     where info.A_id == sug.Area_id
+                                     select info);
+                        areaList.Add(query.First());
+
+                    }
+
+                };
+                return areaList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<User> GetUserbySuggestion()
+        {
+            try
+            {
+                List<Suggestion> suggestion = new List<Suggestion>();
+                List<User> userList = new List<User>();
+                using (DisasterEntities entitie = new DisasterEntities())
+                {
+                    var query1 = (from sugg in entitie.Suggestions select sugg);
+                    if (query1.Any())
+                        suggestion = query1.ToList();
+
+                    foreach (Suggestion sug in suggestion)
+                    {
+                        var query = (from info in entitie.Users
+                                     where info.U_id == sug.User_id
+                                     select info);
+                        userList.Add(query.First());
+
+                    }
+
+                };
+                return userList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Disaster_Type> GetDisasterbySuggestion()
+        {
+            try
+            {
+                List<Suggestion> suggestion = new List<Suggestion>();
+                List<Disaster_Type> disasterList = new List<Disaster_Type>();
+                using (DisasterEntities entitie = new DisasterEntities())
+                {
+                    var query1 = (from sugg in entitie.Suggestions select sugg);
+                    if (query1.Any())
+                        suggestion = query1.ToList();
+
+                    foreach (Suggestion sug in suggestion)
+                    {
+                        var query = (from info in entitie.Disaster_Type
+                                     where info.D_id == sug.Disaster_id
+                                     select info);
+                        disasterList.Add(query.First());
+
+                    }
+
+                };
+                return disasterList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         #endregion
 
         #region user
@@ -661,6 +751,68 @@ namespace DisasterServices
                 throw ex;
             }
         }
+
+        public List<Area> GetAreabyUserA()
+        {
+            try
+            {
+                List<UserAlert> userAlerts = new List<UserAlert>();
+                List<Area> areaList = new List<Area>();
+                using (DisasterEntities entitie = new DisasterEntities())
+                {
+                    var query1 = (from alert in entitie.UserAlerts select alert);
+                    if (query1.Any())
+                        userAlerts = query1.ToList();
+
+                   foreach(UserAlert alert in userAlerts)
+                    {
+                        var query = (from info in entitie.Areas
+                                     where info.A_id == alert.Area_id
+                                      select info);
+                        areaList.Add(query.First());
+
+                    }
+                     
+                };
+                return areaList;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Disaster_Type> GetDisasterbyUserA()
+        {
+            try
+            {
+                List<UserAlert> userAlerts = new List<UserAlert>();
+                List<Disaster_Type> disasterList = new List<Disaster_Type>();
+                using (DisasterEntities entitie = new DisasterEntities())
+                {
+                    var query1 = (from alert in entitie.UserAlerts select alert);
+                    if (query1.Any())
+                        userAlerts = query1.ToList();
+
+                    foreach (UserAlert alert in userAlerts)
+                    {
+                        var query = (from info in entitie.Disaster_Type
+                                     where info.D_id == alert.Disaster_id
+                                     select info);
+                        disasterList.Add(query.First());
+
+                    }
+
+                };
+                return disasterList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         public UserAlert GetMaxUserAlertsID()
         {
             try

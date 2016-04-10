@@ -102,6 +102,18 @@ namespace DisasterServices
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "maxSuggestionid", ResponseFormat = WebMessageFormat.Json)]
         Suggestion GetMaxSuggestionID();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "getAreabySuggestion", ResponseFormat = WebMessageFormat.Json)]
+        List<Area> GetAreabySuggestion();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "getUserbySuggestion", ResponseFormat = WebMessageFormat.Json)]
+        List<User> GetUserbySuggestion();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "getDisasterbySuggestion", ResponseFormat = WebMessageFormat.Json)]
+        List<Disaster_Type> GetDisasterbySuggestion();
     }
     #endregion
 
@@ -135,7 +147,7 @@ namespace DisasterServices
     }
     #endregion
 
-    #region USer alerts
+    #region User alerts
     [ServiceContract]
     public interface IUserAlerts
     {
@@ -162,6 +174,14 @@ namespace DisasterServices
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "maxUserAlertsid", ResponseFormat = WebMessageFormat.Json)]
         UserAlert GetMaxUserAlertsID();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "getAreabyAlerts", ResponseFormat = WebMessageFormat.Json)]
+        List<Area> GetAreabyUserA();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "getDisasterbyAlerts", ResponseFormat = WebMessageFormat.Json)]
+        List<Disaster_Type> GetDisasterbyUserA();
     }
     #endregion
 }
